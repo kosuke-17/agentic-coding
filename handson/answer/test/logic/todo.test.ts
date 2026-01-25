@@ -1,7 +1,7 @@
-import { addTodo, toggleTodo, deleteTodo, filterTodos } from '../src/todo';
-import type { Todo } from '../src/types';
+import { addTodo, toggleTodo, deleteTodo, filterTodos } from '../../src/logic/todo';
+import type { Todo } from '../../src/logic/types';
 
-describe('TODO アプリ', () => {
+describe('TODO アプリ - ロジック', () => {
   let todos: Todo[];
 
   beforeEach(() => {

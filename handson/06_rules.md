@@ -159,7 +159,7 @@ alwaysApply: false
 `globs` に一致するファイルを編集すると、ルールが自動適用されます。
 
 ```
-handson/src/todo.ts に新しい関数を追加してください。
+handson/challenge/src/logic/todo.ts に新しい関数を追加してください。
 ```
 
 エージェントが TDD ルールに従って、

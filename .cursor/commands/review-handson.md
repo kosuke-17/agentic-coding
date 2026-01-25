@@ -4,12 +4,14 @@ description: ハンズオンコードのレビューを実行する
 
 # コードレビュー
 
-handson/ ディレクトリのコードをレビューします。
+handson/challenge/ ディレクトリのコードをレビューします。
 
 ## 対象ファイル
 
-- handson/src/*.ts
-- handson/test/*.test.ts
+- handson/challenge/src/logic/*.ts
+- handson/challenge/src/ui/**/*.tsx
+- handson/challenge/test/logic/*.test.ts
+- handson/challenge/test/ui/**/*.test.tsx
 
 ## レビュー観点
 

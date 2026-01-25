@@ -33,9 +33,9 @@ TODO アプリ作って
 03_todo_app_spec.md の仕様に基づいて、
 addTodo 関数のテストと実装を TDD で作成してください。
 
-1. まず handson/test/todo.test.ts にテストを書く
+1. まず handson/challenge/test/logic/todo.test.ts にテストを書く
 2. テストが失敗することを確認
-3. handson/src/todo.ts に実装を書く
+3. handson/challenge/src/logic/todo.ts に実装を書く
 4. テストが成功することを確認
 
 テストケース:
@@ -62,7 +62,7 @@ addTodo 関数のテストと実装を TDD で作成してください。
 
 ```
 @handson/03_todo_app_spec.md を参照して、
-addTodo 関数のテストを handson/test/todo.test.ts に作成してください。
+addTodo 関数のテストを handson/challenge/test/logic/todo.test.ts に作成してください。
 
 以下のテストケースをカバーしてください：
 - タイトルを指定して TODO を追加できる
@@ -76,7 +76,7 @@ addTodo 関数のテストを handson/test/todo.test.ts に作成してくださ
 エージェントに依頼：
 
 ```
-handson/test/todo.test.ts のテストを実行して、
+handson/challenge/test/logic/todo.test.ts のテストを実行して、
 失敗することを確認してください。
 ```
 
@@ -85,7 +85,7 @@ handson/test/todo.test.ts のテストを実行して、
 エージェントに依頼：
 
 ```
-handson/src/todo.ts に addTodo 関数を実装して、
+handson/challenge/src/logic/todo.ts に addTodo 関数を実装して、
 テストが通るようにしてください。
 ```
 
@@ -99,7 +99,43 @@ handson/src/todo.ts に addTodo 関数を実装して、
 
 ---
 
-## 4.4 実践: 残りの関数を実装する
+## 4.4 UI実装の例
+
+ロジック実装が完了したら、UIコンポーネントの実装に進みます。
+
+### UIコンポーネントの実装
+
+```
+handson/challenge/src/ui/todo-form.tsx を TDD で実装してください。
+
+1. まず test/ui/todo-form.test.tsx にテストを書く
+2. テストが失敗することを確認
+3. todo-form.tsx に実装を書く
+4. テストが成功することを確認
+
+テストケース:
+- 入力欄が表示される
+- 送信ボタンが表示される
+- フォーム送信時にonSubmitが呼び出される
+- 送信後は入力欄がクリアされる
+```
+
+### カスタムフックの実装
+
+```
+handson/challenge/src/ui/hooks/use-todos.ts を実装してください。
+
+このフックは以下の機能を提供します：
+- todos: 現在のTODOリスト
+- filter: 現在のフィルター
+- filteredTodos: フィルタリングされたTODOリスト
+- handleAddTodo: TODO追加
+- handleToggleTodo: TODO完了状態切り替え
+- handleDeleteTodo: TODO削除
+- handleFilterChange: フィルター変更
+```
+
+## 4.5 実践: 残りの関数を実装する
 
 同じ流れで、以下の関数も実装しましょう：
 
@@ -108,6 +144,9 @@ handson/src/todo.ts に addTodo 関数を実装して、
 ```
 @handson/03_todo_app_spec.md を参照して、
 toggleTodo 関数のテストと実装を TDD で作成してください。
+
+handson/challenge/test/logic/todo.test.ts にテストを追加し、
+handson/challenge/src/logic/todo.ts に実装を追加してください。
 
 テストケース：
 - 未完了の TODO を完了にできる
@@ -121,6 +160,9 @@ toggleTodo 関数のテストと実装を TDD で作成してください。
 @handson/03_todo_app_spec.md を参照して、
 deleteTodo 関数のテストと実装を TDD で作成してください。
 
+handson/challenge/test/logic/todo.test.ts にテストを追加し、
+handson/challenge/src/logic/todo.ts に実装を追加してください。
+
 テストケース：
 - TODO を削除できる
 - 存在しない ID を指定するとエラー
@@ -131,6 +173,9 @@ deleteTodo 関数のテストと実装を TDD で作成してください。
 ```
 @handson/03_todo_app_spec.md を参照して、
 filterTodos 関数のテストと実装を TDD で作成してください。
+
+handson/challenge/test/logic/todo.test.ts にテストを追加し、
+handson/challenge/src/logic/todo.ts に実装を追加してください。
 
 テストケース：
 - 'all' で全ての TODO を取得
@@ -146,7 +191,7 @@ filterTodos 関数のテストと実装を TDD で作成してください。
 
 ### 確認ポイント
 
-1. **テストが通るか** - `pnpm test handson/test/todo.test.ts`
+1. **テストが通るか** - `pnpm test handson/challenge/test/logic/todo.test.ts`
 2. **型エラーがないか** - `pnpm tsc --noEmit`
 3. **仕様通りか** - 期待した動作になっているか
 4. **コードの品質** - 可読性、保守性は十分か
@@ -156,7 +201,7 @@ filterTodos 関数のテストと実装を TDD で作成してください。
 エージェントに修正を依頼：
 
 ```
-handson/src/todo.ts の addTodo 関数ですが、
+handson/challenge/src/logic/todo.ts の addTodo 関数ですが、
 以下の問題があります：
 
 - [具体的な問題点]
@@ -171,14 +216,14 @@ handson/src/todo.ts の addTodo 関数ですが、
 ### @記法でファイルを参照
 
 ```
-@handson/src/todo.ts を見て、
+@handson/challenge/src/logic/todo.ts を見て、
 このコードの問題点を指摘してください。
 ```
 
 ### 複数ファイルを一度に処理
 
 ```
-handson/src/ 内の全ての関数に JSDoc コメントを追加してください。
+handson/challenge/src/logic/ 内の全ての関数に JSDoc コメントを追加してください。
 ```
 
 ### テスト実行と修正を一括で

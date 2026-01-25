@@ -37,8 +37,8 @@ Cursor のエージェントモードでは、エージェントが必要に応�
 ```
 以下の2つのタスクを並行して進めてください：
 
-タスク1: handson/src/todo.ts のコードレビューを行い、改善点をリストアップ
-タスク2: handson/test/todo.test.ts に不足しているエッジケースのテストを追加
+タスク1: handson/challenge/src/logic/todo.ts のコードレビューを行い、改善点をリストアップ
+タスク2: handson/challenge/test/logic/todo.test.ts に不足しているエッジケースのテストを追加
 ```
 
 ---
@@ -51,7 +51,7 @@ Cursor のエージェントモードでは、エージェントが必要に応�
 
 ### 演習: 意図的にバグを入れる
 
-まず、`handson/src/todo.ts` の `toggleTodo` 関数に意図的なバグを入れてみましょう：
+まず、`handson/challenge/src/logic/todo.ts` の `toggleTodo` 関数に意図的なバグを入れてみましょう：
 
 ```typescript
 // バグ: completed の反転が正しくない
@@ -82,7 +82,7 @@ export function toggleTodo(todos: Todo[], id: string): Todo[] {
 - 期待値と実際の値の比較
 
 タスク2（原因特定）:
-- handson/src/todo.ts の toggleTodo 関数のコードレビュー
+- handson/challenge/src/logic/todo.ts の toggleTodo 関数のコードレビュー
 - バグの原因箇所の特定
 - 修正案の提示
 
@@ -109,7 +109,7 @@ export function toggleTodo(todos: Todo[], id: string): Todo[] {
 ### 演習: 複数観点でのレビュー
 
 ```
-handson/src/todo.ts のコードを以下の観点でレビューしてください。
+handson/challenge/src/logic/todo.ts のコードを以下の観点でレビューしてください。
 それぞれ独立したタスクとして扱ってください：
 
 観点1（パフォーマンス）:
@@ -151,11 +151,11 @@ TODO の編集機能（updateTodo）を追加します。
 
 タスク2（テスト作成）:
 - タスク1の設計に基づいてテストを作成
-- handson/test/todo.test.ts に追加
+- handson/challenge/test/logic/todo.test.ts に追加
 
 タスク3（実装）:
 - テストが通る実装を作成
-- handson/src/todo.ts に追加
+- handson/challenge/src/logic/todo.ts に追加
 
 各タスクの成果物を順番に作成してください。
 ```

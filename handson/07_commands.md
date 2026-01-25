@@ -50,14 +50,14 @@ description: ハンズオン用のテストを実行する
 
 以下の手順でテストを実行してください：
 
-1. handson/test/ ディレクトリのテストを実行
+1. handson/challenge/test/ ディレクトリのテストを実行
 2. 結果をサマリーで報告
 3. 失敗したテストがあれば原因を分析
 
 ## 実行コマンド
 
 ```bash
-pnpm test handson/test/
+pnpm test handson/challenge/test/
 ```
 
 ## 報告フォーマット
@@ -98,13 +98,13 @@ description: TDD サイクル（Red → Green → Refactor）を実行する
 
 ### 1. 🔴 Red フェーズ
 
-handson/test/{{file}}.test.ts にテストを追加:
+handson/challenge/test/logic/{{file}}.test.ts にテストを追加:
 - 機能の仕様に基づいたテストケースを作成
 - テストを実行して失敗を確認
 
 ### 2. 🟢 Green フェーズ
 
-handson/src/{{file}}.ts に実装を追加:
+handson/challenge/src/logic/{{file}}.ts に実装を追加:
 - テストが通る最小限のコードを実装
 - テストを実行して成功を確認
 
@@ -143,7 +143,7 @@ description: ハンズオンコードのレビューを実行する
 
 # コードレビュー
 
-handson/ ディレクトリのコードをレビューします。
+handson/challenge/ ディレクトリのコードをレビューします。
 
 ## レビュー観点
 
@@ -197,11 +197,11 @@ description: コードからドキュメントを生成する
 
 # ドキュメント生成
 
-handson/src/ のコードから API ドキュメントを生成します。
+handson/challenge/src/logic/ のコードから API ドキュメントを生成します。
 
 ## 対象
 
-- handson/src/todo.ts
+- handson/challenge/src/logic/todo.ts
 
 ## 出力形式
 
@@ -231,7 +231,7 @@ handson/src/ のコードから API ドキュメントを生成します。
 
 ## 出力先
 
-handson/docs/api.md として保存してください。
+handson/challenge/docs/api.md として保存してください。
 ```
 
 ---
@@ -310,7 +310,7 @@ handson/docs/api.md として保存してください。
 
 ❌ 悪い例: 固定的
 ## 対象
-handson/src/todo.ts のテストを実行
+handson/challenge/src/logic/todo.ts のテストを実行
 ```
 
 ---

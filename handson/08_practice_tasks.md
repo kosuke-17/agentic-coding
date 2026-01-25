@@ -50,9 +50,9 @@ function clearCompleted(todos: Todo[]): Todo[]
 @handson/03_todo_app_spec.md を参照して、
 clearCompleted 関数を TDD で実装してください。
 
-1. handson/test/todo.test.ts にテストを追加
+1. handson/challenge/test/logic/todo.test.ts にテストを追加
 2. テストが失敗することを確認
-3. handson/src/todo.ts に実装を追加
+3. handson/challenge/src/logic/todo.ts に実装を追加
 4. テストが成功することを確認
 ```
 
@@ -127,7 +127,7 @@ Subagent を使って原因を調査し、修正してください。
 「addTodo で同じ ID が生成される場合がある」
 
 タスク1（調査）:
-- handson/src/todo.ts の ID 生成ロジックを確認
+- handson/challenge/src/logic/todo.ts の ID 生成ロジックを確認
 - 問題の原因を特定
 
 タスク2（修正）:
@@ -145,7 +145,7 @@ TODO 関連のコードをリファクタリングして、保守性を向上さ
 
 ### 対象
 
-- `handson/src/todo.ts`
+- `handson/challenge/src/logic/todo.ts`
 
 ### リファクタリングポイント
 
@@ -175,7 +175,7 @@ TODO 関連のコードをリファクタリングして、保守性を向上さ
 
 ### 対象
 
-- `handson/test/todo.test.ts`
+- `handson/challenge/test/logic/todo.test.ts`
 
 ### 追加すべきテスト
 
@@ -195,7 +195,7 @@ TODO 関連のコードをリファクタリングして、保守性を向上さ
 ### 進め方
 
 ```
-handson/test/todo.test.ts のテストカバレッジを向上させてください。
+handson/challenge/test/logic/todo.test.ts のテストカバレッジを向上させてください。
 
 以下のケースを追加：
 - 境界値テスト（長いタイトル、空白のみ、特殊文字）
@@ -220,7 +220,7 @@ Subagent を使って分析し、改善してください。
 ### 進め方
 
 ```
-handson/src/todo.ts のパフォーマンスを分析・改善してください。
+handson/challenge/src/logic/todo.ts のパフォーマンスを分析・改善してください。
 
 タスク1（分析）:
 - 各関数の計算量を分析
@@ -273,10 +273,10 @@ handson/src/todo.ts のパフォーマンスを分析・改善してください
 - LocalStorage への保存/読み込み
 - 非同期処理のテスト
 
-### 課題 B: UI の実装
+### 課題 B: UI の拡張
 
-- React コンポーネントの作成
-- コンポーネントテスト
+- 既存のReactコンポーネントの拡張
+- 追加のコンポーネントテスト
 
 ### 課題 C: CI/CD 設定
 

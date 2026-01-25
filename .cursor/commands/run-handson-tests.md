@@ -6,14 +6,14 @@ description: ハンズオン用のテストを実行する
 
 以下の手順でテストを実行してください：
 
-1. handson/test/ ディレクトリのテストを実行
+1. handson/challenge/test/ ディレクトリのテストを実行
 2. 結果をサマリーで報告
 3. 失敗したテストがあれば原因を分析
 
 ## 実行コマンド
 
 ```bash
-pnpm test handson/test/
+pnpm test handson/challenge/test/
 ```
 
 ## 報告フォーマット

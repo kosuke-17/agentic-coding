@@ -11,7 +11,11 @@
 ## 3.1 TODO アプリの概要
 
 シンプルな TODO 管理機能を実装します。
-UI は作成せず、**ロジック部分のみ**を TDD で開発します。
+
+このハンズオンでは、ロジックとUIの両方を実装します。
+実装は `handson/challenge/` ディレクトリで行います。
+
+UI仕様については、[challenge/docs/ui-spec.md](./challenge/docs/ui-spec.md) を参照してください。
 
 ---
 
@@ -95,7 +99,7 @@ type TodoFilter = 'all' | 'active' | 'completed';
 
 ## 3.5 実装する関数
 
-以下の関数を `handson/src/todo.ts` に実装します：
+以下の関数を `handson/challenge/src/logic/todo.ts` に実装します：
 
 ```typescript
 // TODO を追加する
@@ -137,10 +141,10 @@ function filterTodos(todos: Todo[], filter: TodoFilter): Todo[]
 
 ```
 03_todo_app_spec.md の仕様に基づいて、
-TODO アプリのテストを TDD スタイルで作成してください。
+TODO アプリのロジックを TDD スタイルで実装してください。
 
-まず handson/test/todo.test.ts にテストを書き、
-次に handson/src/todo.ts に実装を書いてください。
+まず handson/challenge/test/logic/todo.test.ts にテストを書き、
+次に handson/challenge/src/logic/todo.ts に実装を書いてください。
 
 addTodo 関数から始めてください。
 ```

@@ -8,7 +8,6 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     include: [
-      'handson/test/**/*.test.ts',
       'handson/challenge/test/**/*.{test.ts,test.tsx}',
       'handson/answer/test/**/*.{test.ts,test.tsx}',
     ],

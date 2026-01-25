@@ -1,45 +1,45 @@
 ---
-description: TDD サイクル（Red → Green → Refactor）を実行する
+description: UI用TDDサイクル（Red → Green → Refactor）を実行する
 ---
 
-# TDD サイクル実行
+# UI TDDサイクル実行
 
-指定された機能を TDD で実装します。
+指定されたUIコンポーネントをTDDで実装します。
 
 ## 入力情報
 
 ユーザーから以下の情報を受け取ります：
-- 機能名（実装する関数名）
-- ファイル名（テストと実装のベースファイル名）
+- コンポーネント名（実装するコンポーネント名）
+- ファイル名（テストと実装のベースファイル名、ケバブケース）
 
 ## 手順
 
 ### 1. 🔴 Red フェーズ
 
-handson/challenge/test/logic/{ファイル名}.test.ts にテストを追加:
+handson/challenge/test/ui/{ファイル名}.test.tsx にテストを追加:
 
-1. 機能の仕様を確認
+1. コンポーネントの仕様を確認
 2. テストケースを洗い出す
-   - 正常系
-   - 異常系
+   - レンダリングテスト
+   - ユーザーインタラクションテスト
    - エッジケース
 3. テストコードを記述
 4. テストを実行して **失敗** を確認
 
 ```bash
-pnpm test handson/challenge/test/logic/{ファイル名}.test.ts
+pnpm test handson/challenge/test/ui/{ファイル名}.test.tsx
 ```
 
 ### 2. 🟢 Green フェーズ
 
-handson/challenge/src/logic/{ファイル名}.ts に実装を追加:
+handson/challenge/src/ui/{ファイル名}.tsx に実装を追加:
 
 1. テストが通る **最小限** のコードを実装
 2. 過度な最適化は行わない
 3. テストを実行して **成功** を確認
 
 ```bash
-pnpm test handson/challenge/test/logic/{ファイル名}.test.ts
+pnpm test handson/challenge/test/ui/{ファイル名}.test.tsx
 ```
 
 ### 3. 🔵 Refactor フェーズ
@@ -47,12 +47,13 @@ pnpm test handson/challenge/test/logic/{ファイル名}.test.ts
 コードを改善:
 
 1. 重複を排除
-2. 変数名・関数名を改善
+2. コンポーネント名・変数名を改善
 3. コメント/JSDoc を追加
-4. テストが引き続き **成功** することを確認
+4. アクセシビリティを向上
+5. テストが引き続き **成功** することを確認
 
 ```bash
-pnpm test handson/challenge/test/logic/{ファイル名}.test.ts
+pnpm test handson/challenge/test/ui/{ファイル名}.test.tsx
 ```
 
 ## 報告

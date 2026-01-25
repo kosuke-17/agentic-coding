@@ -11,21 +11,26 @@
 ## 1.1 プロジェクトの確認
 
 このハンズオンでは、既存のプロジェクト構造を活用します。
-まず、必要なディレクトリが存在することを確認しましょう。
+まず、challengeディレクトリが存在することを確認しましょう。
 
 ```bash
 # プロジェクトルートで実行
-ls -la handson/
+ls -la handson/challenge/
 ```
 
-## 1.2 ハンズオン用ディレクトリの作成
+## 1.2 課題ディレクトリの確認
 
-ハンズオン用のテストと実装を配置するディレクトリを作成します：
+課題は `handson/challenge/` ディレクトリに配置されています：
 
-```bash
-# ハンズオン用のソースディレクトリを作成
-mkdir -p handson/src
-mkdir -p handson/test
+```
+challenge/
+├── src/
+│   ├── logic/        # ロジック実装（一部実装済み）
+│   └── ui/          # UIコンポーネント実装（スケルトンのみ）
+├── test/
+│   ├── logic/       # ロジックテスト（一部テストケースのみ）
+│   └── ui/          # UIテスト（スケルトンのみ）
+└── docs/            # ドキュメント
 ```
 
 ## 1.3 TDD 環境の確認
@@ -38,8 +43,11 @@ mkdir -p handson/test
 # 全てのテストを実行
 pnpm test
 
+# challengeのテストを実行
+pnpm test handson/challenge/test/
+
 # 特定のファイルのみテスト
-pnpm test handson/test/todo.test.ts
+pnpm test handson/challenge/test/logic/todo.test.ts
 
 # ウォッチモードで実行（変更を監視）
 pnpm test --watch
@@ -65,7 +73,7 @@ Cursor の Agent モードは、AI がより自律的にタスクを実行でき
 エージェントに以下のように話しかけてみましょう：
 
 ```
-handson/test ディレクトリの中身を確認して、
+handson/challenge/test ディレクトリの中身を確認して、
 どんなファイルがあるか教えてください。
 ```
 
@@ -91,8 +99,7 @@ git checkout -b handson/todo-app
 
 以下が完了していることを確認してください：
 
-- [ ] `handson/src` ディレクトリが存在する
-- [ ] `handson/test` ディレクトリが存在する
+- [ ] `handson/challenge` ディレクトリが存在する
 - [ ] `pnpm test` コマンドが実行できる
 - [ ] Cursor の Agent モードに切り替えられる
 
@@ -100,4 +107,4 @@ git checkout -b handson/todo-app
 
 ## 次のステップ
 
-👉 [02_tdd_basics.md](./02_tdd_basics.md) に進んで、TDD の基本を学びましょう！
+👉 [challenge/docs/README.md](./challenge/docs/README.md) に進んで、課題を開始しましょう！

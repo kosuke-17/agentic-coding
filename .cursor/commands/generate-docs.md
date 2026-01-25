@@ -4,11 +4,11 @@ description: コードからドキュメントを生成する
 
 # ドキュメント生成
 
-handson/src/ のコードから API ドキュメントを生成します。
+handson/challenge/src/logic/ のコードから API ドキュメントを生成します。
 
 ## 対象
 
-- handson/src/*.ts
+- handson/challenge/src/logic/*.ts
 
 ## 出力形式
 
@@ -71,11 +71,11 @@ try {
 
 ## 出力先
 
-handson/docs/api.md として保存してください。
+handson/challenge/docs/api.md として保存してください。
 
 ## 追加タスク
 
 1. ドキュメントを生成
-2. handson/docs/ ディレクトリがなければ作成
+2. handson/challenge/docs/ ディレクトリがなければ作成
 3. api.md を作成/更新
 4. 目次を自動生成
