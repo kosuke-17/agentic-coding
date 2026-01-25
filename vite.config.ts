@@ -6,7 +6,12 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-    environment: 'node',
-    include: ['handson/test/**/*.test.ts'],
+    environment: 'jsdom',
+    include: [
+      'handson/test/**/*.test.ts',
+      'handson/challenge/test/**/*.{test.ts,test.tsx}',
+      'handson/answer/test/**/*.{test.ts,test.tsx}',
+    ],
+    setupFiles: ['./vitest.setup.ts'],
   },
 })
