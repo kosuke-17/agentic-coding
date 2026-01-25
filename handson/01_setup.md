@@ -30,7 +30,7 @@ mkdir -p handson/test
 
 ## 1.3 TDD 環境の確認
 
-このプロジェクトでは **Jest** を使用します。`package.json` に既に設定されています。
+このプロジェクトでは **Vitest** を使用します。`package.json` に既に設定されています。
 
 テストを実行するには：
 
@@ -42,7 +42,7 @@ pnpm test
 pnpm test handson/test/todo.test.ts
 
 # ウォッチモードで実行（変更を監視）
-pnpm test -- --watch
+pnpm test --watch
 ```
 
 ---

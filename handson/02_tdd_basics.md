@@ -56,7 +56,7 @@ describe('add 関数', () => {
 });
 ```
 
-> **Note**: Jest はグローバルに `describe`, `it`, `expect` を提供するため、インポート不要です。
+> **Note**: Vitest はグローバルに `describe`, `it`, `expect` を提供するため、インポート不要です（`vitest.config.ts` で `globals: true` を設定している場合）。
 
 この時点でテストを実行すると、**失敗します**（`add` 関数が存在しないため）。
 

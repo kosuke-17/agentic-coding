@@ -77,7 +77,8 @@ if (!title.trim()) {
 ### 構造
 
 ```typescript
-// Jest はグローバルに describe, it, expect を提供するためインポート不要
+// Vitest はグローバルに describe, it, expect を提供（globals: true 設定時）
+// または明示的にインポート: import { describe, it, expect } from 'vitest'
 
 describe('関数名', () => {
   describe('正常系', () => {
