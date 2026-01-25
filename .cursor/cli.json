@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**/*)",
+      "Write(docs/**/*)",
+      "Write(.github/workflows/**/report*.md)",
+      "Shell(grep)",
+      "Shell(find)"
+    ],
+    "deny": [
+      "Shell(git)",
+      "Shell(gh)",
+      "Write(.env*)",
+      "Write(package.json)",
+      "Write(package-lock.json)",
+      "Write(pnpm-lock.yaml)",
+      "Write(yarn.lock)"
+    ]
+  }
+}

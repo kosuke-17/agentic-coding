@@ -1,0 +1,125 @@
+---
+description: TDD ハンズオン用のルール。テスト駆動開発を強制する。
+globs: ["handson/**/*.ts"]
+alwaysApply: false
+---
+
+# TDD ハンズオン開発ルール
+
+## 基本原則
+
+handson/ ディレクトリ内のコードを編集する際は、
+必ず **TDD（テスト駆動開発）** のサイクルに従ってください。
+
+## 開発フロー
+
+### 1. 🔴 Red - まずテストを書く
+
+- 実装より先にテストを作成
+- テストファイル: `handson/test/{機能名}.test.ts`
+- テストが失敗することを確認してから次へ
+
+### 2. 🟢 Green - テストを通す最小限の実装
+
+- テストが通る最小限のコードを書く
+- 過度な最適化は後回し
+- 実装ファイル: `handson/src/{機能名}.ts`
+
+### 3. 🔵 Refactor - リファクタリング
+
+- テストが通ったままコードを改善
+- 重複の排除、可読性の向上
+- 機能は変更しない
+
+## コーディング規約
+
+### 関数定義
+
+```typescript
+/**
+ * 関数の説明
+ * @param paramName - パラメータの説明
+ * @returns 戻り値の説明
+ * @throws エラーの条件
+ * @example
+ * const result = functionName(param);
+ */
+export function functionName(paramName: ParamType): ReturnType {
+  // 実装
+}
+```
+
+### 型定義
+
+```typescript
+interface Todo {
+  id: string;
+  title: string;
+  completed: boolean;
+  createdAt: Date;
+}
+```
+
+### エラーハンドリング
+
+- エッジケースは関数の最初に処理
+- アーリーリターンを使用
+- エラーメッセージは具体的に
+
+```typescript
+if (!title.trim()) {
+  throw new Error('Title cannot be empty');
+}
+```
+
+## テストの書き方
+
+### 構造
+
+```typescript
+// Jest はグローバルに describe, it, expect を提供するためインポート不要
+
+describe('関数名', () => {
+  describe('正常系', () => {
+    it('期待される動作の説明', () => {
+      // Arrange
+      const input = ...;
+      
+      // Act
+      const result = functionName(input);
+      
+      // Assert
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('異常系', () => {
+    it('エラーケースの説明', () => {
+      expect(() => functionName(invalidInput)).toThrow();
+    });
+  });
+});
+```
+
+### 命名規則
+
+- describe: 日本語で機能グループを説明
+- it: 日本語でテストケースを説明
+
+## 禁止事項
+
+以下は避けてください：
+
+- ❌ テストなしでの実装追加
+- ❌ any 型の使用
+- ❌ console.log のコミット
+- ❌ 未使用の変数/インポート
+- ❌ 元の配列を変更するミュータブルな操作
+
+## 推奨事項
+
+- ✅ 純粋関数を優先
+- ✅ イミュータブルな実装
+- ✅ 型推論を活用
+- ✅ 早期リターン
+- ✅ 意味のある変数名

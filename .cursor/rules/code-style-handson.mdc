@@ -1,0 +1,195 @@
+---
+description: ハンズオン用コードスタイルルール
+globs: ["handson/**/*.ts"]
+alwaysApply: false
+---
+
+# コードスタイルルール
+
+## 命名規則
+
+### 変数名
+
+- **camelCase** を使用
+- 説明的な名前を付ける
+- 補助動詞を活用
+
+```typescript
+// ✅ 良い例
+const todoList: Todo[] = [];
+const isCompleted = true;
+const hasError = false;
+
+// ❌ 悪い例
+const tl: Todo[] = [];
+const flag = true;
+```
+
+### 関数名
+
+- **camelCase** を使用
+- 動詞で始める
+
+```typescript
+// ✅ 良い例
+function addTodo() {}
+function toggleTodo() {}
+function filterTodos() {}
+
+// ❌ 悪い例
+function todo() {}
+function todoToggle() {}
+```
+
+### 型名
+
+- **PascalCase** を使用
+
+```typescript
+// ✅ 良い例
+interface Todo {}
+type TodoFilter = 'all' | 'active' | 'completed';
+```
+
+### 定数
+
+- **UPPER_SNAKE_CASE** を使用
+
+```typescript
+// ✅ 良い例
+const DEFAULT_FILTER = 'all';
+const MAX_TITLE_LENGTH = 100;
+```
+
+## 関数の書き方
+
+### 単一責務
+
+1つの関数は1つのことだけを行う
+
+```typescript
+// ✅ 良い例
+function validateTitle(title: string): void { ... }
+function generateId(): string { ... }
+function createTodo(title: string): Todo { ... }
+
+// ❌ 悪い例
+function createAndValidateTodoAndGenerateId(title: string): Todo { ... }
+```
+
+### 純粋関数
+
+- 同じ入力に対して常に同じ出力
+- 副作用を避ける
+
+```typescript
+// ✅ 良い例: 純粋関数
+function addTodo(todos: Todo[], title: string): Todo[] {
+  const newTodo = createTodo(title);
+  return [...todos, newTodo];
+}
+
+// ❌ 悪い例: 副作用あり
+function addTodo(todos: Todo[], title: string): void {
+  todos.push(createTodo(title)); // 元の配列を変更
+}
+```
+
+### 早期リターン
+
+```typescript
+// ✅ 良い例
+function processTitle(title: string): string {
+  if (!title) {
+    throw new Error('Title is required');
+  }
+  
+  if (title.length > MAX_LENGTH) {
+    throw new Error('Title is too long');
+  }
+  
+  return title.trim();
+}
+
+// ❌ 悪い例: ネストが深い
+function processTitle(title: string): string {
+  if (title) {
+    if (title.length <= MAX_LENGTH) {
+      return title.trim();
+    } else {
+      throw new Error('Title is too long');
+    }
+  } else {
+    throw new Error('Title is required');
+  }
+}
+```
+
+## エクスポート
+
+### 名前付きエクスポートを使用
+
+```typescript
+// ✅ 良い例
+export function addTodo() {}
+export function toggleTodo() {}
+export interface Todo {}
+
+// ❌ 悪い例
+export default function addTodo() {}
+```
+
+## コメント
+
+### JSDoc 形式
+
+```typescript
+/**
+ * TODO を追加する
+ * 
+ * @param todos - 現在の TODO リスト
+ * @param title - 新しい TODO のタイトル
+ * @returns 新しい TODO を含む配列
+ * @throws タイトルが空の場合
+ * 
+ * @example
+ * const newTodos = addTodo(todos, 'Buy milk');
+ */
+export function addTodo(todos: Todo[], title: string): Todo[] {
+  // ...
+}
+```
+
+### インラインコメント
+
+- **Why** を説明する
+- **What** は自明なら省略
+
+```typescript
+// ✅ 良い例: なぜそうするかを説明
+// ID の衝突を避けるためにタイムスタンプとランダム値を組み合わせる
+const id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+// ❌ 悪い例: 何をしているかだけ（自明）
+// ID を生成する
+const id = generateId();
+```
+
+## インポート
+
+### 順序
+
+1. 外部ライブラリ
+2. 内部モジュール
+3. 型定義
+
+```typescript
+// 1. 外部ライブラリ
+import { describe, it, expect } from 'vitest';
+
+// 2. 内部モジュール
+import { addTodo, toggleTodo } from '../src/todo';
+
+// 3. 型定義
+import type { Todo, TodoFilter } from '../src/types';
+```
