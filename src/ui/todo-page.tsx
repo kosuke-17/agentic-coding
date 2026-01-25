@@ -6,7 +6,7 @@ import { useTodos } from './hooks/use-todos';
 /**
  * メインアプリコンポーネント
  */
-export function App() {
+export function TodoPage() {
   const {
     filteredTodos,
     filter,

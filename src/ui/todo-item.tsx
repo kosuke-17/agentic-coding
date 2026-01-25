@@ -30,7 +30,7 @@ export function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
         style={{
           flex: 1,
           textDecoration: todo.completed ? 'line-through' : 'none',
-          color: todo.completed ? '#999' : '#000',
+          color:'#999',
         }}
       >
         {todo.title}
