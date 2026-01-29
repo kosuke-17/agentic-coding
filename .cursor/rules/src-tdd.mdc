@@ -1,0 +1,112 @@
+---
+description: srcディレクトリ用のTDDルール。テスト駆動開発を強制する。
+globs: ["src/**/*.tsx"]
+alwaysApply: false
+---
+
+# src ディレクトリ TDD 開発ルール
+
+## 基本原則
+
+src/ ディレクトリ内のコードを編集する際は、
+必ず **TDD（テスト駆動開発）** のサイクルに従ってください。
+
+## 開発フロー
+
+### 1. 🔴 Red - まずテストを書く
+
+- 実装より先にテストを作成
+- テストファイル: `src/ui/{コンポーネント名}.test.tsx`（実装と同じディレクトリ）
+- テストが失敗することを確認してから次へ
+
+### 2. 🟢 Green - テストを通す最小限の実装
+
+- テストが通る最小限のコードを書く
+- 過度な最適化は後回し
+- 実装ファイル: `src/ui/{コンポーネント名}.tsx`
+
+### 3. 🔵 Refactor - リファクタリング
+
+- テストが通ったままコードを改善
+- 重複の排除、可読性の向上
+- 機能は変更しない
+
+## コンポーネントの書き方
+
+### 関数コンポーネント
+
+```typescript
+/**
+ * コンポーネントの説明
+ */
+interface ComponentProps {
+  prop1: string;
+  prop2: number;
+}
+
+export function Component({ prop1, prop2 }: ComponentProps) {
+  return <div>{prop1}</div>;
+}
+```
+
+### Propsの型定義
+
+```typescript
+interface TodoPageProps {
+  // Propsがない場合は空でも可
+}
+```
+
+### カスタムフックの使用
+
+```typescript
+const { todos, handleAddTodo } = useTodos();
+```
+
+## テストの書き方
+
+### 構造
+
+```typescript
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, it, expect } from 'vitest';
+
+describe('Component名', () => {
+  describe('レンダリング', () => {
+    it('期待される動作の説明', () => {
+      // Arrange
+      render(<Component />);
+      
+      // Act
+      const element = screen.getByRole('heading');
+      
+      // Assert
+      expect(element).toBeInTheDocument();
+    });
+  });
+});
+```
+
+### 命名規則
+
+- describe: 日本語で機能グループを説明
+- it: 日本語でテストケースを説明
+
+## 禁止事項
+
+以下は避けてください：
+
+- ❌ テストなしでの実装追加
+- ❌ any 型の使用
+- ❌ console.log のコミット
+- ❌ 未使用の変数/インポート
+- ❌ 既存実装（答え）を参照してコピー
+
+## 推奨事項
+
+- ✅ 型安全性を確保
+- ✅ 純粋関数として実装
+- ✅ 適切なコメント（JSDoc）
+- ✅ アクセシビリティを考慮
+- ✅ 意味のある変数名

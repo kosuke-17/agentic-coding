@@ -1,0 +1,116 @@
+---
+description: srcディレクトリ用のUIテストルール。React Testing Libraryを使ったテストの書き方。
+globs: ["src/**/*.test.tsx"]
+alwaysApply: false
+---
+
+# src ディレクトリ UIテストルール
+
+## 基本原則
+
+src/ ディレクトリのUIテストは、React Testing Libraryを使用して実装してください。
+
+## テストの書き方
+
+### インポート
+
+```typescript
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, it, expect } from 'vitest';
+```
+
+### コンポーネントのレンダリング
+
+```typescript
+render(<Component prop1={value1} prop2={value2} />);
+```
+
+### 要素の取得
+
+```typescript
+// ロールで取得（推奨）
+screen.getByRole('heading', { name: 'TODO App' });
+screen.getByRole('button', { name: '追加' });
+
+// プレースホルダーで取得
+screen.getByPlaceholderText('新しいTODOを入力...');
+
+// テキストで取得（最後の手段）
+screen.getByText('TODO App');
+```
+
+### ユーザーイベントのシミュレート
+
+```typescript
+const user = userEvent.setup();
+await user.click(button);
+await user.type(input, 'text');
+```
+
+### アサーション
+
+```typescript
+expect(element).toBeInTheDocument();
+expect(element).toHaveTextContent('text');
+expect(mockFunction).toHaveBeenCalledWith(arg);
+```
+
+## テストの構造
+
+```typescript
+describe('Component名', () => {
+  describe('レンダリング', () => {
+    it('期待される動作の説明', () => {
+      // Arrange
+      render(<Component />);
+      
+      // Act
+      const button = screen.getByRole('button');
+      await userEvent.click(button);
+      
+      // Assert
+      expect(screen.getByText('expected')).toBeInTheDocument();
+    });
+  });
+});
+```
+
+## ベストプラクティス
+
+- **ロールベースのクエリを優先**: getByRole, getByLabelText等
+- **テキストベースのクエリは最後の手段**: getByTextは避ける
+- **アクセシビリティを意識**: aria-label等を検証
+- **ユーザーの視点でテスト**: ユーザーが何を見て、何をするかを考える
+- **モック関数を使用**: コールバックの呼び出しを検証
+
+## カスタムフックのモック
+
+```typescript
+// useTodos フックをモック
+vi.mock('./hooks/use-todos', () => ({
+  useTodos: () => ({
+    filteredTodos: [],
+    filter: 'all',
+    handleAddTodo: vi.fn(),
+    handleToggleTodo: vi.fn(),
+    handleDeleteTodo: vi.fn(),
+    handleFilterChange: vi.fn(),
+  }),
+}));
+```
+
+## 禁止事項
+
+- ❌ 実装の詳細をテストしない（クラス名、内部状態等）
+- ❌ 過度に複雑なテスト
+- ❌ テスト間の依存関係
+- ❌ 既存実装（答え）を参照してコピー
+
+## 推奨事項
+
+- ✅ ユーザーの行動をシミュレート
+- ✅ アクセシビリティ属性を検証
+- ✅ エッジケースもカバー
+- ✅ テスト名は明確に
+- ✅ テストは独立して実行可能

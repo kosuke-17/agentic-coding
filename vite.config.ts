@@ -10,6 +10,7 @@ export default defineConfig({
     include: [
       'handson/challenge/test/**/*.{test.ts,test.tsx}',
       'handson/answer/test/**/*.{test.ts,test.tsx}',
+      'src/**/*.test.{ts,tsx}',
     ],
     setupFiles: ['./vitest.setup.ts'],
   },
